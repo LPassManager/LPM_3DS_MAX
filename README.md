@@ -13,6 +13,6 @@ L Pass Manager for 3ds max
  
 ##Developers
 * [Download Github for windows](https://windows.github.com/)
-* Click the clone to desktop link on this page to clone the repository to C:\LPM_3DS_MAX (Or some other repository)
+* [Clone to Desktop](github-windows://openRepo/https://github.com/LPassManager/LPM_3DS_MAX) link on this page to clone the repository to C:\LPM_3DS_MAX (or another directory)
 * Copy Script\Startup\LPM_Startup.ms to you max startup directory
 * In LPM_Startup.ms modify the LPM_DIR to point to C:\LPM_3DS_MAX
