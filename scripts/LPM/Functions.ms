@@ -42,7 +42,7 @@ fn destroyAllDialogs=
 		try(destroyDialog pickPasses_RO) catch()
 		try(destroyDialog objectSetProps)catch()
 		try(destroyDialog lightSetProps) catch()
-		try(destroyDialog LPM_treeview_rollout)catch()	
+		try(destroyDialog LPM_treeview_rollout)catch()
 		callbacks.removeScripts id:#closeLPM
 	)
 ),
@@ -889,7 +889,7 @@ fn quickScripts=
 	global LPM_QuickScripts
 	pathString=::LPM_DIR+"quickscripts\\";
 	
-	--right click menu for passes
+	--right click menu for passes-
 	RC="rcMenu LPM_QuickScripts (\n"
 	count=0;
 	theDirs=getdirectories (pathString+"*")
