@@ -1,13 +1,12 @@
 /*
-Title     :  StateSets operator for LPM 1.09+*
-			- Plugin 3ds max's 2013 State Sets in LPM
+Title     :  StateSets operator for LPM 1.13+*
 
-Copyright : © 2012 veda3d.com
+Copyright :  2012-2015 veda3d.com
 Author    : Royal Ghost
 
 Version   : 0.1.0
 						- First alpha release
-						- Tested on 3dsmax 2013 (PU2)
+						- Tested on 3dsmax 2013 (PU2) and 3ds max 2012 Subscription Advantage Pack
 			
 Usage	    : 			
 						1. Add custom operator "StateSets" in LPM
@@ -266,5 +265,5 @@ struct LPM_stateSetsOperator
 	
 )
 
-if(((maxVersion())[1]) >= 15000) then
+if(((maxVersion())[1]) >= 14000) then
 	LPM_operators.fnRegisterOperator LPM_stateSetsOperator
