@@ -38,7 +38,7 @@ LPM_Root = $LPM_Root
 ilTv = dotNetObject "System.Windows.Forms.ImageList"
 ilTv.imageSize = dotNetObject "System.Drawing.Size" 16 15
 
-rollout LPM_treeview_rollout "LPM v1.14"
+rollout LPM_treeview_rollout "LPM v1.20"
 (
 
 local copyNode
