@@ -226,17 +226,13 @@ struct LPM_DeadlineAPI
 					ddl_pool.items = SMTDSettings.Pools
 					
 				local theIndex = findItem ddl_pool.items SMTDSettings.PoolName
-				btn_submit.enabled = true
+
 				if theIndex > 0 then 
 					ddl_pool.selection = theIndex 
 				else	
 					ddl_pool.selection = 1
-					
-				if ddl_pool.selection < 2 then
-				(	
-					btn_submit.enabled = false
-				)	
 			)
+			
 			-- On open handler
 			fn onOpen =
 			(

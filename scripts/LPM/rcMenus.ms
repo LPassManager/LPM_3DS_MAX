@@ -2053,7 +2053,6 @@ rcMenu rc_ObjectSetMenu
 		else
 			theSelection=for it in tmpCollection where (((superClassof it) ==light) and(not(iskindof it target)))collect it
 		
-		
 		try (select theSelection) catch()
 	)
 	
@@ -2145,14 +2144,10 @@ rcMenu rc_layerMenu
 	
 	on selectObjectsOnLayer picked do
 	(
+		max select none
 		theLayerName=(LPM_treeview_rollout.tv.selectedNode.tag.value).leaf
 		theLayer=LayerManager.getLayerFromName theLayerName
 		theLayer.select on
-		--print (refs.dependents theLayer)
-		--select 
-		
-		
-		
 	)
 )
 rollout wildCardRO "Wildcard" width:217 height:57
