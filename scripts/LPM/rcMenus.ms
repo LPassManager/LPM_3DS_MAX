@@ -29,8 +29,18 @@ global LPM_renderer_closed
 --renderer closed callback
 fn LPM_renderer_closed = 
 ( 
+
 	callbacks.RemoveScripts #tabbedDialogDeleted id:#myscript_update
-	LPM_treeview_rollout.tv.selectedNode.tag.value.props=LPM_Fun.saveRenderPreset()
+	
+	-- speedup this slow step
+	with undo off
+	(
+		with redraw off
+		(
+			LPM_treeview_rollout.tv.selectedNode.tag.value.props=LPM_Fun.saveRenderPreset()
+		)
+	)
+
 	LPM_treeview_rollout.tv.selectedNode.tag.value.initialized=true
 	LPM_treeview_rollout.tv.enabled=true	
 	theRenderer=(classof renderers.current) as string
@@ -54,9 +64,10 @@ fn LPM_renderer_closed =
 			theNode.tag.value.name="LPM_"+"Vray"
 		)
 	)
-	
+
 	
 	LPM_Fun.loadRenderPreset LPM_oldRenderSettings
+
 )
 
 --about menu

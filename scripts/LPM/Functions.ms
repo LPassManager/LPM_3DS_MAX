@@ -258,43 +258,55 @@ fn getShotName theShot=
 
 fn saveRenderPreset =
 (
-	LPM_LoadingPreset=true
-	case (classof renderers.current) of
+	with undo off
 	(
-		Default_Scanline_Renderer: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32,33,34}
-		mental_ray_renderer: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32,33,34}
-		Default: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32}
+		with redraw off
+		(
+			LPM_LoadingPreset=true
+			case (classof renderers.current) of
+			(
+				Default_Scanline_Renderer: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32,33,34}
+				mental_ray_renderer: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32,33,34}
+				Default: renderpresets.Save 0 ((getdir #temp) +"\\temp.rps") #{32}
+			)
+			
+			
+			aa=fopen ((getdir #temp) +"\\temp.rps") "r"
+			theSize= getFileSize ((getdir #temp) +"\\temp.rps")
+			theArray=#()
+			for i=1 to theSize do
+			(
+				theArray[i]=(ReadByte aa #unsigned)
+			)
+			
+			fclose aa
+			LPM_LoadingPreset=false
+		)
 	)
-	
-	
-	aa=fopen ((getdir #temp) +"\\temp.rps") "r"
-	theSize= getFileSize ((getdir #temp) +"\\temp.rps")
-	theArray=#()
-	for i=1 to theSize do
-	(
-		theArray[i]=(ReadByte aa #unsigned)
-	)
-	
-	fclose aa
-	LPM_LoadingPreset=false
 	theArray
 	
 ),
 
 fn loadRenderPreset theArray =
 (
-	LPM_LoadingPreset=true
-	bb=fopen ((getdir #temp)+"\\temp2.rps")  "wb"
-	for i=1 to theArray.count do
+	with undo off
 	(
-		WriteByte bb theArray[i] #unsigned
-	
+		with redraw off
+		(
+			LPM_LoadingPreset=true
+			bb=fopen ((getdir #temp)+"\\temp2.rps")  "wb"
+			for i=1 to theArray.count do
+			(
+				WriteByte bb theArray[i] #unsigned
+			
+			)
+			fflush bb
+			fclose bb
+			
+			renderpresets.LoadAll 0 ((getdir #temp)+"\\temp2.rps")
+			LPM_LoadingPreset=false
+		)
 	)
-	fflush bb
-	fclose bb
-	
-	renderpresets.LoadAll 0 ((getdir #temp)+"\\temp2.rps")
-	LPM_LoadingPreset=false
 ),
 
 fn addToLPMLayer theNode=
